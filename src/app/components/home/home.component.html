@@ -28,6 +28,7 @@
           <div class="tw-font-600 tw-text-24-px">All Books</div>
           <front-end-internship-assignment-table-view
           [booksList]="allBooks"
+          [topOrNext]="topOrNext"
           ></front-end-internship-assignment-table-view>
         </div>
 
@@ -40,7 +41,11 @@
           <div class="tw-font-600 tw-text-24-px">Searched Books</div>
           <front-end-internship-assignment-table-view
           [booksList]="searchedBooks"
+          [topOrNext]="topOrNext"
           ></front-end-internship-assignment-table-view>
+          <button (click)="decrement()">Prev</button>
+          <span>Curr : {{currPage}} </span>
+          <button (click)="increment()">Next</button>
         </div>
      </section>
   </div>
