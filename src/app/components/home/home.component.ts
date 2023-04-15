@@ -48,6 +48,10 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  ClearSearch(){
+    this.bookSearch.reset()
+  }
+
   decrement(){
 
     if( this.currPage == 0 ) return 

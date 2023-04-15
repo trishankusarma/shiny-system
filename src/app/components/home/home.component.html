@@ -9,6 +9,7 @@
       placeholder="Search Books"
       class="tw-border-0 tw-bg-inherit"
     >
+    <button (click)="ClearSearch()">Clear</button>
   </div>
 </div>
 <div class="tw-flex">
@@ -24,7 +25,7 @@
   </div>
   <div class="tw-flex tw-flex-row tw-m-24-px">
      <section class="all-books">
-        <div *ngIf="bookSearch.value.length === 0">
+        <div *ngIf="bookSearch.value?.length === 0">
           <div class="tw-font-600 tw-text-24-px">All Books</div>
           <front-end-internship-assignment-table-view
           [booksList]="allBooks"
@@ -32,12 +33,12 @@
           ></front-end-internship-assignment-table-view>
         </div>
 
-        <div *ngIf="bookSearch.value.length > 0 && searchedBooks.length === 0">
+        <div *ngIf="bookSearch.value?.length > 0 && searchedBooks.length === 0">
           <div class="tw-font-600 tw-text-24-px">Search Books</div>
           <div>No Books Found with the name of this book title or author</div>
         </div>
 
-        <div *ngIf="bookSearch.value.length > 0 && searchedBooks.length > 0">
+        <div *ngIf="bookSearch.value?.length > 0 && searchedBooks.length > 0">
           <div class="tw-font-600 tw-text-24-px">Searched Books</div>
           <front-end-internship-assignment-table-view
           [booksList]="searchedBooks"
