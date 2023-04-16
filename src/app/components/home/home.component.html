@@ -23,31 +23,32 @@
       </ul>
     </section>
   </div>
-  <div class="tw-flex tw-flex-row tw-m-24-px">
-     <section class="all-books">
-        <div *ngIf="bookSearch.value?.length === 0">
-          <div class="tw-font-600 tw-text-24-px">All Books</div>
-          <front-end-internship-assignment-table-view
-          [booksList]="allBooks"
-          [topOrNext]="topOrNext"
-          ></front-end-internship-assignment-table-view>
-        </div>
-
-        <div *ngIf="bookSearch.value?.length > 0 && searchedBooks.length === 0">
-          <div class="tw-font-600 tw-text-24-px">Search Books</div>
-          <div>No Books Found with the name of this book title or author</div>
-        </div>
-
-        <div *ngIf="bookSearch.value?.length > 0 && searchedBooks.length > 0">
-          <div class="tw-font-600 tw-text-24-px">Searched Books</div>
-          <front-end-internship-assignment-table-view
-          [booksList]="searchedBooks"
-          [topOrNext]="topOrNext"
-          ></front-end-internship-assignment-table-view>
-          <button (click)="decrement()">Prev</button>
-          <span>Curr : {{currPage}} </span>
-          <button (click)="increment()">Next</button>
-        </div>
-     </section>
-  </div>
+  <span *ngIf="isLoading === true"> Loading... </span>
+  <div *ngIf="isLoading === false" class="tw-flex tw-flex-row tw-m-24-px">
+      <section class="all-books">
+         <div *ngIf="bookSearch.value?.length === 0">
+           <div class="tw-font-600 tw-text-24-px">All Books</div>
+           <front-end-internship-assignment-table-view
+           [booksList]="allBooks"
+           [topOrNext]="topOrNext"
+           ></front-end-internship-assignment-table-view>
+         </div>
+ 
+         <div *ngIf="bookSearch.value?.length > 0 && searchedBooks.length === 0">
+           <div class="tw-font-600 tw-text-24-px">Search Books</div>
+           <div>No Books Found with the name of this book title or author</div>
+         </div>
+ 
+         <div *ngIf="bookSearch.value?.length > 0 && searchedBooks.length > 0">
+           <div class="tw-font-600 tw-text-24-px">Searched Books</div>
+           <front-end-internship-assignment-table-view
+           [booksList]="searchedBooks"
+           [topOrNext]="topOrNext"
+           ></front-end-internship-assignment-table-view>
+           <button (click)="decrement()">Prev</button>
+           <span>Curr : {{currPage}} </span>
+           <button (click)="increment()">Next</button>
+         </div>
+      </section>
+   </div>
 </div>

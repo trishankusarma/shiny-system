@@ -49,18 +49,22 @@ export class HomeComponent implements OnInit {
   }
 
   ClearSearch(){
-    this.bookSearch.reset()
+    this.bookSearch.setValue("")
   }
 
   decrement(){
 
-    if( this.currPage == 0 ) return 
+    if( this.currPage == 0 ) {
+      this.isLoading = false;
+      return
+    } 
 
     this.currPage = this.currPage - 1
 
     if( this.currPage > 0 ) this.topOrNext = "Next"
 
     this.searchedBooks = this.searchedAllBooks.splice(this.currPage*this.limit, this.limit)
+    this.isLoading = false;
   }
 
   increment(){
@@ -69,12 +73,14 @@ export class HomeComponent implements OnInit {
     if( this.currPage > 0 ) this.topOrNext = "Next"
 
     this.searchedBooks = this.searchedAllBooks.splice(this.currPage*this.limit, this.limit)
+    this.isLoading = false;
   }
 
   searchBooks(value : string) {
       this.currPage = 0
       if (value == ""){
         this.searchedBooks = []
+        this.isLoading = false;
         return;
       }
       const reg = new RegExp(`${value}`, "gi");
@@ -87,6 +93,7 @@ export class HomeComponent implements OnInit {
          return this.searchAuthor.length >0
       }).sort()
      this.searchedBooks = this.searchedAllBooks.splice(0, this.limit)
+     this.isLoading = false;
   }
 
   ngOnInit(): void {
